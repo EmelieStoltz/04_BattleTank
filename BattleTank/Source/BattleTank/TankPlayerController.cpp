@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
@@ -11,7 +12,7 @@ void ATankPlayerController::BeginPlay()
 		UE_LOG(LogTemp, Warning, TEXT("No tank"));
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("Player tank: %s"), *(Tank->GetName()));
+		//UE_LOG(LogTemp, Warning, TEXT("Player tank: %s"), *(Tank->GetName()));
 	}
 }
 
