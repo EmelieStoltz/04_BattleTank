@@ -7,6 +7,7 @@
 
 // Forward Declaration, allows us to reference UTankBarrel, without adding a chain of dependencies
 class UTankBarrel; 
+class UTankTurret;
 
 // Hold barrel's properties and elevate method 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -19,13 +20,14 @@ public:
 	UTankAimingComponent();
 
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	// TODO add SetTurretReference;
+	void SetTurretReference(UTankTurret* TurretToSet);
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 private:
 	UTankBarrel* Barrel = nullptr;
+
+	UTankTurret* Turret = nullptr;
 	
 	void MoveBarrel(FVector AimDirection);
 };
