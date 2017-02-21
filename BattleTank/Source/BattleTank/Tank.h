@@ -2,7 +2,6 @@
 
 #pragma once
 
-
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h" // put new includes above
 
@@ -41,6 +40,5 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000; 
-
 	
 };
