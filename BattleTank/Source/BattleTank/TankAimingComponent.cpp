@@ -2,6 +2,7 @@
 
 #include "BattleTank.h"
 #include "TankTurret.h"
+#include "Projectile.h"
 #include "TankBarrel.h" // full include needed when a tankbarrel method will be used in the file
 #include "TankAimingComponent.h"
 
@@ -60,4 +61,24 @@ void UTankAimingComponent::MoveBarrel(FVector AimDirection)
 
 	Barrel->Elevate(DeltaRotator.Pitch);
 	Turret->RotateAround(DeltaRotator.Yaw);
+}
+
+void UTankAimingComponent::Fire()
+{
+	if (!ensure(Barrel && ProjectileBlueprint)) { return; }
+
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+
+	if (isReloaded)
+	{
+		// spawn projectile at the socket location on the barrel
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			Barrel->GetSocketLocation(FName("Socket")),
+			Barrel->GetSocketRotation(FName("Socket"))
+			);
+
+		Projectile->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+	}
 }
