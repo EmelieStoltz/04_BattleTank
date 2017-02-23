@@ -2,11 +2,10 @@
 
 #pragma once
 
-#include "Tank.h"
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
-class ATank;
+class UTankAimingComponent;
 
 /**
  * 
@@ -26,4 +25,6 @@ private:
 
 	//How close can the AI tank get to the player
 	float AcceptanceRadius = 3000;
+
+	UTankAimingComponent* AimingComponent = nullptr;
 };
