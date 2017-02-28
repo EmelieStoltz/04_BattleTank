@@ -1,5 +1,8 @@
 *.VC.db
-Content/StarterContent
+BattleTank.VC.VC.opendb
+.vs/
+
+BattleTank/Content/UI/BT17-Firing-M1A1-tank-in-Djibouti.uasset
 
 # Visual Studio 2015 user specific files
 .vs/
